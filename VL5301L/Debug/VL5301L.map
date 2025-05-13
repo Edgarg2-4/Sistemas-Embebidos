@@ -1,0 +1,352 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.7                     
+******************************************************************************
+>> Linked Tue May 13 10:32:21 2025
+
+OUTPUT FILE NAME:   <VL5301L.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000919
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00100000  00000a6a  000ff596  R  X
+  SRAM                  20000000   00040000  0000030d  0003fcf3  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000a70   00000a70    r-x
+  00000000    00000000    00000208   00000208    r-- .intvecs
+  00000208    00000208    00000782   00000782    r-x .text
+  00000990    00000990    000000e0   000000e0    r-- .cinit
+20000000    20000000    0000030d   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    000000f4   00000000    rw- .data
+  200002f4    200002f4    00000019   00000000    rw- .bss
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000208     
+                  00000000    00000208     tm4c1294ncpdt_startup_ccs.obj (.intvecs)
+
+.text      0    00000208    00000782     
+                  00000208    000005c8     main.obj (.text)
+                  000007d0    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  0000086c    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  000008d4    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00000918    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  0000094c    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00000968    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00000976    0000000c     tm4c1294ncpdt_startup_ccs.obj (.text)
+                  00000982    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000986    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00000990    000000e0     
+                  00000990    000000bb     (.cinit..data.load) [load image, compression = lzss]
+                  00000a4b    00000001     --HOLE-- [fill = 0]
+                  00000a4c    0000000c     (__TI_handler_table)
+                  00000a58    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000a60    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000200    000000f4     UNINITIALIZED
+                  20000200    000000f4     main.obj (.data)
+
+.bss       0    200002f4    00000019     UNINITIALIZED
+                  200002f4    00000004     (.common:i)
+                  200002f8    00000004     (.common:leer)
+                  200002fc    00000004     (.common:status)
+                  20000300    00000004     (.common:stop_variable)
+                  20000304    00000004     (.common:valor)
+                  20000308    00000002     (.common:dataH)
+                  2000030a    00000002     (.common:datal)
+                  2000030c    00000001     (.common:error)
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                          code   ro data   rw data
+       ------                          ----   -------   -------
+    .\
+       main.obj                        1480   0         269    
+       tm4c1294ncpdt_startup_ccs.obj   12     520       0      
+    +--+-------------------------------+------+---------+---------+
+       Total:                          1492   520       269    
+                                                               
+    C:\ti\ccs1280\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj               156    0         0      
+       copy_decompress_lzss.c.obj      104    0         0      
+       autoinit.c.obj                  68     0         0      
+       boot_cortex_m.c.obj             52     0         0      
+       copy_zero_init.c.obj            28     0         0      
+       copy_decompress_none.c.obj      14     0         0      
+       exit.c.obj                      4      0         0      
+       pre_init.c.obj                  4      0         0      
+    +--+-------------------------------+------+---------+---------+
+       Total:                          430    0         0      
+                                                               
+       Stack:                          0      0         512    
+       Linker Generated:               0      223       0      
+    +--+-------------------------------+------+---------+---------+
+       Grand Total:                    1922   743       781    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000a60 records: 2, size/record: 8, table size: 16
+	.data: load addr=00000990, load size=000000bb bytes, run addr=20000200, run size=000000f4 bytes, compression=lzss
+	.bss: load addr=00000a58, load size=00000008 bytes, run addr=200002f4, run size=00000019 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000a4c records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                       
+-------   ----                                       
+20000244  ALGO_PART_TO_PART_RANGE_OFFSET_MM          
+200002e8  ALGO_PHASECAL_CONFIG_TIMEOUT               
+200002e4  ALGO_PHASECAL_LIM                          
+20000200  Adrevl5301                                 
+00000987  C$$EXIT                                    
+2000029c  CROSSTALK_COMPENSATION_PEAK_RATE_MCPS      
+200002d4  DYNAMIC_SPAD_NUM_REQUESTED_REF_SPAD        
+200002d8  DYNAMIC_SPAD_REF_EN_START_OFFSET           
+2000026c  FINAL_RANGE_CONFIG_MIN_COUNT_RATE_RTN_LIMIT
+20000260  FINAL_RANGE_CONFIG_MIN_SNR                 
+20000294  FINAL_RANGE_CONFIG_TIMEOUT_MACROP_HI       
+20000298  FINAL_RANGE_CONFIG_TIMEOUT_MACROP_LO       
+20000268  FINAL_RANGE_CONFIG_VALID_PHASE_HIGH        
+20000264  FINAL_RANGE_CONFIG_VALID_PHASE_LOW         
+20000290  FINAL_RANGE_CONFIG_VCSEL_PERIOD            
+200002d0  GLOBAL_CONFIG_REF_EN_START_SELECT          
+200002b8  GLOBAL_CONFIG_SPAD_ENABLES_REF_0           
+200002bc  GLOBAL_CONFIG_SPAD_ENABLES_REF_1           
+200002c0  GLOBAL_CONFIG_SPAD_ENABLES_REF_2           
+200002c4  GLOBAL_CONFIG_SPAD_ENABLES_REF_3           
+200002c8  GLOBAL_CONFIG_SPAD_ENABLES_REF_4           
+200002cc  GLOBAL_CONFIG_SPAD_ENABLES_REF_5           
+200002b4  GLOBAL_CONFIG_VCSEL_WIDTH                  
+20000220  GPIO_HV_MUX_ACTIVE_HIGH                    
+20000288  HISTOGRAM_CONFIG_INITIAL_PHASE_SELECT      
+2000028c  HISTOGRAM_CONFIG_READOUT_CTRL              
+00000209  I2C_Init                                   
+20000248  I2C_SLAVE_DEVICE_ADDRESS                   
+200002a8  IDENTIFICATION_MODEL_ID                    
+200002ac  IDENTIFICATION_REVISION_ID                 
+2000024c  MSRC_CONFIG_CONTROL                        
+200002a0  MSRC_CONFIG_TIMEOUT_MACROP                 
+200002b0  OSC_CALIBRATE_VAL                          
+200002dc  POWER_MANAGEMENT_GO1_POWER_FORCE           
+20000250  PRE_RANGE_CONFIG_MIN_SNR                   
+20000270  PRE_RANGE_CONFIG_SIGMA_THRESH_HI           
+20000274  PRE_RANGE_CONFIG_SIGMA_THRESH_LO           
+2000027c  PRE_RANGE_CONFIG_TIMEOUT_MACROP_HI         
+20000280  PRE_RANGE_CONFIG_TIMEOUT_MACROP_LO         
+20000258  PRE_RANGE_CONFIG_VALID_PHASE_HIGH          
+20000254  PRE_RANGE_CONFIG_VALID_PHASE_LOW           
+20000278  PRE_RANGE_CONFIG_VCSEL_PERIOD              
+2000025c  PRE_RANGE_MIN_COUNT_RATE_RTN_LIMIT         
+20000238  RESULT_CORE_AMBIENT_WINDOW_EVENTS_REF      
+20000230  RESULT_CORE_AMBIENT_WINDOW_EVENTS_RTN      
+2000023c  RESULT_CORE_RANGING_TOTAL_EVENTS_REF       
+20000234  RESULT_CORE_RANGING_TOTAL_EVENTS_RTN       
+20000228  RESULT_INTERRUPT_STATUS                    
+20000240  RESULT_PEAK_SIGNAL_RATE_REF                
+2000022c  RESULT_RANGE_STATUS                        
+00000977  ResetISR                                   
+200002a4  SOFT_RESET_GO2_SOFT_RESET_N                
+20000204  SYSRANGE_START                             
+20000284  SYSTEM_HISTOGRAM_BIN                       
+20000218  SYSTEM_INTERMEASUREMENT_PERIOD             
+20000224  SYSTEM_INTERRUPT_CLEAR                     
+2000021c  SYSTEM_INTERRUPT_CONFIG_GPIO               
+20000214  SYSTEM_RANGE_CONFIG                        
+20000210  SYSTEM_SEQUENCE_CONFIG                     
+20000208  SYSTEM_THRESH_HIGH                         
+2000020c  SYSTEM_THRESH_LOW                          
+200002ec  TPR                                        
+200002e0  VHV_CONFIG_PAD_SCL_SDA__EXTSUP_HV          
+20000200  __STACK_END                                
+00000200  __STACK_SIZE                               
+20000200  __STACK_TOP                                
+00000a60  __TI_CINIT_Base                            
+00000a70  __TI_CINIT_Limit                           
+00000a4c  __TI_Handler_Table_Base                    
+00000a58  __TI_Handler_Table_Limit                   
+000008d5  __TI_auto_init_nobinit_nopinit             
+0000086d  __TI_decompress_lzss                       
+00000969  __TI_decompress_none                       
+ffffffff  __TI_pprof_out_hndl                        
+ffffffff  __TI_prof_data_size                        
+ffffffff  __TI_prof_data_start                       
+00000000  __TI_static_base__                         
+0000094d  __TI_zero_init_nomemset                    
+000007d1  __aeabi_memcpy                             
+000007d1  __aeabi_memcpy4                            
+000007d1  __aeabi_memcpy8                            
+ffffffff  __binit__                                  
+ffffffff  __c_args__                                 
+UNDEFED   __mpu_init                                 
+20000000  __stack                                    
+20000000  __start___llvm_prf_cnts                    
+20000000  __stop___llvm_prf_cnts                     
+00000919  _c_int00_noargs                            
+UNDEFED   _system_post_cinit                         
+00000983  _system_pre_init                           
+00000987  abort                                      
+ffffffff  binit                                      
+00000381  configvl53l0x                              
+200002f0  cont                                       
+20000308  dataH                                      
+2000030a  datal                                      
+2000030c  error                                      
+00000267  esperar                                    
+00000000  g_pfnVectors                               
+200002f4  i                                          
+200002f8  leer                                       
+00000709  main                                       
+000007d1  memcpy                                     
+000002db  readvl5301                                 
+200002fc  status                                     
+20000300  stop_variable                              
+20000304  valor                                      
+00000287  writevl5301                                
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                       
+-------   ----                                       
+00000000  __TI_static_base__                         
+00000000  g_pfnVectors                               
+00000200  __STACK_SIZE                               
+00000209  I2C_Init                                   
+00000267  esperar                                    
+00000287  writevl5301                                
+000002db  readvl5301                                 
+00000381  configvl53l0x                              
+00000709  main                                       
+000007d1  __aeabi_memcpy                             
+000007d1  __aeabi_memcpy4                            
+000007d1  __aeabi_memcpy8                            
+000007d1  memcpy                                     
+0000086d  __TI_decompress_lzss                       
+000008d5  __TI_auto_init_nobinit_nopinit             
+00000919  _c_int00_noargs                            
+0000094d  __TI_zero_init_nomemset                    
+00000969  __TI_decompress_none                       
+00000977  ResetISR                                   
+00000983  _system_pre_init                           
+00000987  C$$EXIT                                    
+00000987  abort                                      
+00000a4c  __TI_Handler_Table_Base                    
+00000a58  __TI_Handler_Table_Limit                   
+00000a60  __TI_CINIT_Base                            
+00000a70  __TI_CINIT_Limit                           
+20000000  __stack                                    
+20000000  __start___llvm_prf_cnts                    
+20000000  __stop___llvm_prf_cnts                     
+20000200  Adrevl5301                                 
+20000200  __STACK_END                                
+20000200  __STACK_TOP                                
+20000204  SYSRANGE_START                             
+20000208  SYSTEM_THRESH_HIGH                         
+2000020c  SYSTEM_THRESH_LOW                          
+20000210  SYSTEM_SEQUENCE_CONFIG                     
+20000214  SYSTEM_RANGE_CONFIG                        
+20000218  SYSTEM_INTERMEASUREMENT_PERIOD             
+2000021c  SYSTEM_INTERRUPT_CONFIG_GPIO               
+20000220  GPIO_HV_MUX_ACTIVE_HIGH                    
+20000224  SYSTEM_INTERRUPT_CLEAR                     
+20000228  RESULT_INTERRUPT_STATUS                    
+2000022c  RESULT_RANGE_STATUS                        
+20000230  RESULT_CORE_AMBIENT_WINDOW_EVENTS_RTN      
+20000234  RESULT_CORE_RANGING_TOTAL_EVENTS_RTN       
+20000238  RESULT_CORE_AMBIENT_WINDOW_EVENTS_REF      
+2000023c  RESULT_CORE_RANGING_TOTAL_EVENTS_REF       
+20000240  RESULT_PEAK_SIGNAL_RATE_REF                
+20000244  ALGO_PART_TO_PART_RANGE_OFFSET_MM          
+20000248  I2C_SLAVE_DEVICE_ADDRESS                   
+2000024c  MSRC_CONFIG_CONTROL                        
+20000250  PRE_RANGE_CONFIG_MIN_SNR                   
+20000254  PRE_RANGE_CONFIG_VALID_PHASE_LOW           
+20000258  PRE_RANGE_CONFIG_VALID_PHASE_HIGH          
+2000025c  PRE_RANGE_MIN_COUNT_RATE_RTN_LIMIT         
+20000260  FINAL_RANGE_CONFIG_MIN_SNR                 
+20000264  FINAL_RANGE_CONFIG_VALID_PHASE_LOW         
+20000268  FINAL_RANGE_CONFIG_VALID_PHASE_HIGH        
+2000026c  FINAL_RANGE_CONFIG_MIN_COUNT_RATE_RTN_LIMIT
+20000270  PRE_RANGE_CONFIG_SIGMA_THRESH_HI           
+20000274  PRE_RANGE_CONFIG_SIGMA_THRESH_LO           
+20000278  PRE_RANGE_CONFIG_VCSEL_PERIOD              
+2000027c  PRE_RANGE_CONFIG_TIMEOUT_MACROP_HI         
+20000280  PRE_RANGE_CONFIG_TIMEOUT_MACROP_LO         
+20000284  SYSTEM_HISTOGRAM_BIN                       
+20000288  HISTOGRAM_CONFIG_INITIAL_PHASE_SELECT      
+2000028c  HISTOGRAM_CONFIG_READOUT_CTRL              
+20000290  FINAL_RANGE_CONFIG_VCSEL_PERIOD            
+20000294  FINAL_RANGE_CONFIG_TIMEOUT_MACROP_HI       
+20000298  FINAL_RANGE_CONFIG_TIMEOUT_MACROP_LO       
+2000029c  CROSSTALK_COMPENSATION_PEAK_RATE_MCPS      
+200002a0  MSRC_CONFIG_TIMEOUT_MACROP                 
+200002a4  SOFT_RESET_GO2_SOFT_RESET_N                
+200002a8  IDENTIFICATION_MODEL_ID                    
+200002ac  IDENTIFICATION_REVISION_ID                 
+200002b0  OSC_CALIBRATE_VAL                          
+200002b4  GLOBAL_CONFIG_VCSEL_WIDTH                  
+200002b8  GLOBAL_CONFIG_SPAD_ENABLES_REF_0           
+200002bc  GLOBAL_CONFIG_SPAD_ENABLES_REF_1           
+200002c0  GLOBAL_CONFIG_SPAD_ENABLES_REF_2           
+200002c4  GLOBAL_CONFIG_SPAD_ENABLES_REF_3           
+200002c8  GLOBAL_CONFIG_SPAD_ENABLES_REF_4           
+200002cc  GLOBAL_CONFIG_SPAD_ENABLES_REF_5           
+200002d0  GLOBAL_CONFIG_REF_EN_START_SELECT          
+200002d4  DYNAMIC_SPAD_NUM_REQUESTED_REF_SPAD        
+200002d8  DYNAMIC_SPAD_REF_EN_START_OFFSET           
+200002dc  POWER_MANAGEMENT_GO1_POWER_FORCE           
+200002e0  VHV_CONFIG_PAD_SCL_SDA__EXTSUP_HV          
+200002e4  ALGO_PHASECAL_LIM                          
+200002e8  ALGO_PHASECAL_CONFIG_TIMEOUT               
+200002ec  TPR                                        
+200002f0  cont                                       
+200002f4  i                                          
+200002f8  leer                                       
+200002fc  status                                     
+20000300  stop_variable                              
+20000304  valor                                      
+20000308  dataH                                      
+2000030a  datal                                      
+2000030c  error                                      
+ffffffff  __TI_pprof_out_hndl                        
+ffffffff  __TI_prof_data_size                        
+ffffffff  __TI_prof_data_start                       
+ffffffff  __binit__                                  
+ffffffff  __c_args__                                 
+ffffffff  binit                                      
+UNDEFED   __mpu_init                                 
+UNDEFED   _system_post_cinit                         
+
+[108 symbols]

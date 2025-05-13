@@ -1,0 +1,6 @@
+"./CAN_Practica_1294.obj"
+"./IEEE_CAN.obj"
+"./tm4c1294ncpdt_startup_ccs.obj"
+"../tm4c1294ncpdt.cmd"
+-llibc.a
+-l"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib"

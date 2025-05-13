@@ -1,0 +1,229 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.7                     
+******************************************************************************
+>> Linked Tue Apr 15 15:24:55 2025
+
+OUTPUT FILE NAME:   <pantalla OLED.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000006d5
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00100000  0000077e  000ff882  R  X
+  SRAM                  20000000   00040000  00000219  0003fde7  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000780   00000780    r-x
+  00000000    00000000    00000208   00000208    r-- .intvecs
+  00000208    00000208    0000053e   0000053e    r-x .text
+  00000748    00000748    00000038   00000038    r-- .cinit
+20000000    20000000    00000219   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    00000014   00000000    rw- .data
+  20000214    20000214    00000005   00000000    rw- .bss
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000208     
+                  00000000    00000208     tm4c1294ncpdt_startup_ccs.obj (.intvecs)
+
+.text      0    00000208    0000053e     
+                  00000208    00000384     main.obj (.text)
+                  0000058c    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000628    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00000690    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  000006d4    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000708    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00000724    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00000732    0000000c     tm4c1294ncpdt_startup_ccs.obj (.text)
+                  0000073e    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000742    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00000748    00000038     
+                  00000748    0000000e     (.cinit..data.load) [load image, compression = lzss]
+                  00000756    00000002     --HOLE-- [fill = 0]
+                  00000758    0000000c     (__TI_handler_table)
+                  00000764    00000004     --HOLE-- [fill = 0]
+                  00000768    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000770    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000200    00000014     UNINITIALIZED
+                  20000200    00000014     main.obj (.data)
+
+.bss       0    20000214    00000005     UNINITIALIZED
+                  20000214    00000004     (.common:i)
+                  20000218    00000001     (.common:error)
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                          code   ro data   rw data
+       ------                          ----   -------   -------
+    .\
+       main.obj                        900    0         25     
+       tm4c1294ncpdt_startup_ccs.obj   12     520       0      
+    +--+-------------------------------+------+---------+---------+
+       Total:                          912    520       25     
+                                                               
+    C:\ti\ccs1280\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj               156    0         0      
+       copy_decompress_lzss.c.obj      104    0         0      
+       autoinit.c.obj                  68     0         0      
+       boot_cortex_m.c.obj             52     0         0      
+       copy_zero_init.c.obj            28     0         0      
+       copy_decompress_none.c.obj      14     0         0      
+       exit.c.obj                      4      0         0      
+       pre_init.c.obj                  4      0         0      
+    +--+-------------------------------+------+---------+---------+
+       Total:                          430    0         0      
+                                                               
+       Stack:                          0      0         512    
+       Linker Generated:               0      50        0      
+    +--+-------------------------------+------+---------+---------+
+       Grand Total:                    1342   570       537    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000770 records: 2, size/record: 8, table size: 16
+	.data: load addr=00000748, load size=0000000e bytes, run addr=20000200, run size=00000014 bytes, compression=lzss
+	.bss: load addr=00000768, load size=00000008 bytes, run addr=20000214, run size=00000005 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000758 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+20000204  AdreCOM                       
+20000208  AdreDATA                      
+20000200  AdreSSD1306                   
+00000743  C$$EXIT                       
+00000309  I2C_Data                      
+00000209  I2C_Init                      
+00000287  I2C_comando                   
+000004e9  Letra_A                       
+00000733  ResetISR                      
+00000423  SSD1306_Clear                 
+0000038b  SSD1306_Init                  
+000004b5  SSD1306_SCROLLINGR            
+2000020c  TPR                           
+20000200  __STACK_END                   
+00000200  __STACK_SIZE                  
+20000200  __STACK_TOP                   
+00000770  __TI_CINIT_Base               
+00000780  __TI_CINIT_Limit              
+00000758  __TI_Handler_Table_Base       
+00000764  __TI_Handler_Table_Limit      
+00000691  __TI_auto_init_nobinit_nopinit
+00000629  __TI_decompress_lzss          
+00000725  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00000709  __TI_zero_init_nomemset       
+0000058d  __aeabi_memcpy                
+0000058d  __aeabi_memcpy4               
+0000058d  __aeabi_memcpy8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000000  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+000006d5  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+0000073f  _system_pre_init              
+00000743  abort                         
+ffffffff  binit                         
+20000210  cont                          
+20000218  error                         
+00000267  esperar                       
+00000000  g_pfnVectors                  
+20000214  i                             
+00000521  main                          
+0000058d  memcpy                        
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000200  __STACK_SIZE                  
+00000209  I2C_Init                      
+00000267  esperar                       
+00000287  I2C_comando                   
+00000309  I2C_Data                      
+0000038b  SSD1306_Init                  
+00000423  SSD1306_Clear                 
+000004b5  SSD1306_SCROLLINGR            
+000004e9  Letra_A                       
+00000521  main                          
+0000058d  __aeabi_memcpy                
+0000058d  __aeabi_memcpy4               
+0000058d  __aeabi_memcpy8               
+0000058d  memcpy                        
+00000629  __TI_decompress_lzss          
+00000691  __TI_auto_init_nobinit_nopinit
+000006d5  _c_int00_noargs               
+00000709  __TI_zero_init_nomemset       
+00000725  __TI_decompress_none          
+00000733  ResetISR                      
+0000073f  _system_pre_init              
+00000743  C$$EXIT                       
+00000743  abort                         
+00000758  __TI_Handler_Table_Base       
+00000764  __TI_Handler_Table_Limit      
+00000770  __TI_CINIT_Base               
+00000780  __TI_CINIT_Limit              
+20000000  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000200  AdreSSD1306                   
+20000200  __STACK_END                   
+20000200  __STACK_TOP                   
+20000204  AdreCOM                       
+20000208  AdreDATA                      
+2000020c  TPR                           
+20000210  cont                          
+20000214  i                             
+20000218  error                         
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[49 symbols]
