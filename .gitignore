@@ -1,5 +1,10 @@
-**/.metadata
-**/.jxbrowser.userdata
-**/.markers.snap
-**/.syncinfo.snap
-**/.log
+# Ignorar toda la carpeta .metadata (con su contenido)
+.metadata/
+
+# Ignorar cualquier carpeta .jxbrowser.userdata en cualquier parte
+**/.jxbrowser.userdata/
+
+# Ignorar todos los archivos con estos nombres/extensiones en cualquier parte del repo
+*.log
+*.markers.snap
+*.syncinfo.snap
