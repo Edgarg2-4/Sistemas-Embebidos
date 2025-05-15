@@ -1,5 +1,6 @@
 # Ignorar toda la carpeta .metadata (con su contenido)
 .metadata/
+.jxbrowser.userdata/
 
 # Ignorar cualquier carpeta .jxbrowser.userdata en cualquier parte
 **/.jxbrowser.userdata/
